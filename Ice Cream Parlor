@@ -1,0 +1,18 @@
+    public static List<Integer> icecreamParlor(int m, List<Integer> arr) {
+        Map<Integer, Integer> costMap = new HashMap<>();
+        
+        for (int i = 0; i < arr.size(); i++) {
+            int currentCost = arr.get(i);
+            int complement = m - currentCost;
+            
+            if (costMap.containsKey(complement)) {
+                int firstIndex = costMap.get(complement);
+                int secondIndex = i + 1; 
+                
+                return Arrays.asList(firstIndex, secondIndex);
+            }
+            
+            costMap.put(currentCost, i + 1);
+        }
+         return null;
+    }
